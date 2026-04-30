@@ -20,6 +20,9 @@ class ReportAgent:
 请生成一份完整、规范的实验报告，包括：
 实验目的、实验原理、实验步骤、代码分析、实验结果、实验总结。
 """
-            return generate_with_llm(prompt)
+            llm_result = generate_with_llm(prompt)
+            if llm_result:
+                return llm_result
 
+        # fallback
         return build_report_template(topic, requirement, analysis, raw_content)
